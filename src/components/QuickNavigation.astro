@@ -1,0 +1,21 @@
+---
+const links = [
+  ['#premise', 'Premise'], ['#need', 'What you need'], ['#character', 'Protagonist'],
+  ['#deck', 'Story Deck'], ['#setup', 'Setup'], ['#play', 'Turn flow'],
+  ['#obstacles', 'Obstacles'], ['#grey-ladies', 'Grey Ladies'], ['#ending', 'Ending'],
+  ['#reference', 'One-glance reference'],
+];
+---
+
+<nav aria-label="Quick navigation">
+  <div class="nav-links">
+    {links.map(([href, label]) => <a href={href}>{label}</a>)}
+  </div>
+  <div class="nav-picker">
+    <label for="section-picker">Jump to section</label>
+    <select id="section-picker">
+      <option value="">Choose a section…</option>
+      {links.map(([value, label]) => <option value={value}>{label}</option>)}
+    </select>
+  </div>
+</nav>

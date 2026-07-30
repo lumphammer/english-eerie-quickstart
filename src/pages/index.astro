@@ -1,17 +1,50 @@
 ---
-
+import '../styles/quickstart.css';
+import EndingReference from '../components/EndingReference.astro';
+import Foundations from '../components/Foundations.astro';
+import Gameplay from '../components/Gameplay.astro';
+import PageHeader from '../components/PageHeader.astro';
+import QuickNavigation from '../components/QuickNavigation.astro';
+import StorySetup from '../components/StorySetup.astro';
 ---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>English Eerie — Rules Quickstart & Cheatsheet</title>
+  </head>
+  <body>
+    <div class="page">
+      <PageHeader />
+      <QuickNavigation />
+      <main>
+        <Foundations />
+        <StorySetup />
+        <Gameplay />
+        <EndingReference />
+      </main>
+      <p class="footer">Unofficial rules quickstart for use at the table. English Eerie and its original rules remain the property of their respective creators.</p>
+    </div>
+    <script is:inline>
+      const sectionPicker = document.getElementById('section-picker');
+
+      sectionPicker.addEventListener('change', () => {
+        if (!sectionPicker.value) return;
+        document.querySelector(sectionPicker.value)?.scrollIntoView({ behavior: 'smooth' });
+        history.replaceState(null, '', sectionPicker.value);
+      });
+
+      const sections = [...document.querySelectorAll('main section[id]')];
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) sectionPicker.value = `#${visible.target.id}`;
+      }, { rootMargin: '-20% 0px -65% 0px', threshold: [0, .25, .5, .75] });
+
+      sections.forEach(section => observer.observe(section));
+    </script>
+  </body>
 </html>
