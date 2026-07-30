@@ -1,5 +1,6 @@
 @import "@fontsource-variable/crimson-pro/wght.css";
 @import "@fontsource/im-fell-english/400.css";
+
 :root {
   --ink: #1f221d;
   --muted: #646a5d;
@@ -65,8 +66,12 @@ header {
     ),
     linear-gradient(135deg, #ede6d7, #d8d0be);
   box-shadow: 0 14px 38px var(--shadow);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-header::after {
+/*header::after {
   content: "";
   position: absolute;
   inset: auto -80px -110px auto;
@@ -75,15 +80,15 @@ header::after {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(81, 87, 96, 0.23), transparent 67%);
   pointer-events: none;
-}
+}*/
 .eyebrow {
   margin: 0 0 8px;
   color: var(--rust);
-  font:
-    700 0.8rem/1.2 system-ui,
-    sans-serif;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 0.6em;
+  /*letter-spacing: 0.16em;*/
+  /*text-transform: uppercase;*/
+  font-synthesis-small-caps: auto;
+  /*letter-spacing: 0em;*/
 }
 h1 {
   margin: 0;
@@ -99,13 +104,6 @@ h1 {
   margin: 18px 0 0;
   color: #454a41;
   font-size: clamp(1.03rem, 2.2vw, 1.25rem);
-}
-.motto {
-  margin-top: 22px;
-  padding-left: 15px;
-  border-left: 4px solid var(--rust);
-  color: #393c36;
-  font-style: italic;
 }
 
 nav {
