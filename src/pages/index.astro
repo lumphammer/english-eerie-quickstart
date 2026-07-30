@@ -1,11 +1,11 @@
 ---
-import '../styles/quickstart.css';
-import EndingReference from '../components/EndingReference.astro';
-import Foundations from '../components/Foundations.astro';
-import Gameplay from '../components/Gameplay.astro';
-import PageHeader from '../components/PageHeader.astro';
-import QuickNavigation from '../components/QuickNavigation.astro';
-import StorySetup from '../components/StorySetup.astro';
+import "../styles/quickstart.css";
+import EndingReference from "../components/EndingReference.astro";
+import Foundations from "../components/Foundations.astro";
+import Gameplay from "../components/Gameplay.astro";
+import PageHeader from "../components/PageHeader.astro";
+import QuickNavigation from "../components/QuickNavigation.astro";
+import StorySetup from "../components/StorySetup.astro";
 ---
 
 <!doctype html>
@@ -25,26 +25,34 @@ import StorySetup from '../components/StorySetup.astro';
         <Gameplay />
         <EndingReference />
       </main>
-      <p class="footer">Unofficial rules quickstart for use at the table. English Eerie and its original rules remain the property of their respective creators.</p>
+      <p class="footer">
+        Unofficial rules quickstart for use at the table. English Eerie and its
+        original rules remain the property of their respective creators.
+      </p>
     </div>
     <script is:inline>
-      const sectionPicker = document.getElementById('section-picker');
+      const sectionPicker = document.getElementById("section-picker");
 
-      sectionPicker.addEventListener('change', () => {
+      sectionPicker.addEventListener("change", () => {
         if (!sectionPicker.value) return;
-        document.querySelector(sectionPicker.value)?.scrollIntoView({ behavior: 'smooth' });
-        history.replaceState(null, '', sectionPicker.value);
+        document
+          .querySelector(sectionPicker.value)
+          ?.scrollIntoView({ behavior: "smooth" });
+        history.replaceState(null, "", sectionPicker.value);
       });
 
-      const sections = [...document.querySelectorAll('main section[id]')];
-      const observer = new IntersectionObserver((entries) => {
-        const visible = entries
-          .filter(entry => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) sectionPicker.value = `#${visible.target.id}`;
-      }, { rootMargin: '-20% 0px -65% 0px', threshold: [0, .25, .5, .75] });
+      const sections = [...document.querySelectorAll("main section[id]")];
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible) sectionPicker.value = `#${visible.target.id}`;
+        },
+        { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.25, 0.5, 0.75] },
+      );
 
-      sections.forEach(section => observer.observe(section));
+      sections.forEach((section) => observer.observe(section));
     </script>
   </body>
 </html>
