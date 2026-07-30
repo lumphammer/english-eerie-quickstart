@@ -1,3 +1,5 @@
+@import "@fontsource-variable/crimson-pro/wght.css";
+@import "@fontsource/im-fell-english/400.css";
 :root {
   --ink: #1f221d;
   --muted: #646a5d;
@@ -37,7 +39,7 @@ body {
       transparent 4px
     ),
     var(--paper);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Crimson Pro Variable", Georgia, "Times New Roman", serif;
   line-height: 1.45;
 }
 
@@ -86,6 +88,7 @@ header::after {
 h1 {
   margin: 0;
   max-width: 100%;
+  font-family: "IM FELL English", Georgia, "Times New Roman", serif;
   font-size: clamp(2.45rem, 7vw, 5.8rem);
   line-height: 0.92;
   letter-spacing: -0.045em;
